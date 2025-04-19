@@ -1,0 +1,16 @@
+{
+    "name": "Cat",
+    "rootNamespace": "",
+    "references": [
+        "GUID:eae964d06b65d8749b4b31d96dceeb56"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
