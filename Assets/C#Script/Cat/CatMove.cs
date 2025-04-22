@@ -11,7 +11,11 @@ public class CatMove : MonoBehaviour
     private PickBag pickBag;
     public LayerMask clickableLayer;
     private Camera mainCamera;
-    private bool start;
+
+    private bool start;//是否开始弹射过程
+    private int jumpNum;//最大连续跳跃次数
+    private int haveATry;
+
     [Header("弹力系数")]
     public float powerSize;
     public float maxPower;
@@ -30,6 +34,8 @@ public class CatMove : MonoBehaviour
     private void Start()
     {
         GameDate.totalWeight = 1f;
+        jumpNum = 2;
+        haveATry=0;
         rb = Cat.GetComponent<Rigidbody2D>();
         pickBag = Cat.GetComponent<PickBag>();
         mainCamera = Camera.main;
@@ -47,6 +53,7 @@ public class CatMove : MonoBehaviour
         else
         {
             PCpower();
+            Debug.Log(jumpNum);
         }
     }
 
@@ -62,7 +69,7 @@ public class CatMove : MonoBehaviour
 
     public void PCpower()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&&jumpNum!=0)
         {
             Vector2 clickPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero, Mathf.Infinity, clickableLayer);
@@ -86,8 +93,8 @@ public class CatMove : MonoBehaviour
         {
             start = false;
             rb.AddForce(GameDate.force, ForceMode2D.Impulse);
-            //rb.velocity = GameDate.force*50*Time.fixedDeltaTime;
             lr.enabled = false;
+            jumpNum -= 1;
         }
     }
 
@@ -120,5 +127,13 @@ public class CatMove : MonoBehaviour
             // 设置轨迹点
             lr.SetPosition(i, currentPos);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        haveATry += 1;
+        float relativeV = collision.relativeVelocity.magnitude;
+        Debug.Log(relativeV);
+        if(relativeV<3)
+            jumpNum = 2;
     }
 }
