@@ -14,7 +14,6 @@ public class CatMove : MonoBehaviour
 
     private bool start;//是否开始弹射过程
     private int jumpNum;//最大连续跳跃次数
-    private int haveATry;
 
     [Header("弹力系数")]
     public float powerSize;
@@ -35,7 +34,6 @@ public class CatMove : MonoBehaviour
     {
         GameDate.totalWeight = 1f;
         jumpNum = 2;
-        haveATry=0;
         rb = Cat.GetComponent<Rigidbody2D>();
         pickBag = Cat.GetComponent<PickBag>();
         mainCamera = Camera.main;
@@ -53,7 +51,6 @@ public class CatMove : MonoBehaviour
         else
         {
             PCpower();
-            Debug.Log(jumpNum);
         }
     }
 
@@ -130,7 +127,6 @@ public class CatMove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        haveATry += 1;
         float relativeV = collision.relativeVelocity.magnitude;
         Debug.Log(relativeV);
         if(relativeV<3)

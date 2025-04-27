@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class GameDate_SO : ScriptableObject
 {
     public double blood;
+    public double maxBlood;
     public int allPackage;
     public int ownPackage;
     public int givePackage;
