@@ -50,6 +50,7 @@ public class CatMove : MonoBehaviour
         }
         else
         {
+            Debug.Log(jumpNum);
             PCpower();
         }
     }
@@ -127,9 +128,14 @@ public class CatMove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        float relativeV = collision.relativeVelocity.magnitude;
-        Debug.Log(relativeV);
-        if(relativeV<3)
-            jumpNum = 2;
+        if (jumpNum == 0)
+        {
+            StartCoroutine(RecoverJump());
+        }
+    }
+    private System.Collections.IEnumerator RecoverJump()
+    {
+        yield return new WaitForSeconds(3f);
+        jumpNum = 2;
     }
 }
