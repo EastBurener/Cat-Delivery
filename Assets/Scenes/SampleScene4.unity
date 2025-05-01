@@ -1323,7 +1323,38 @@ MonoBehaviour:
   target: {fileID: 486410899}
   smoothSpeed: 0.1
   offset: {x: 0, y: 0, z: -1}
---- !u!1001 &880547769
+--- !u!1 &940940801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940940802}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940940802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940940801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 486410899}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &944828266
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1333,19 +1364,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95413700632302852, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.9616978
+      value: 3.6652331
       objectReference: {fileID: 0}
     - target: {fileID: 95413700632302852, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.34215266
+      value: 0.7088653
       objectReference: {fileID: 0}
     - target: {fileID: 95413700632302852, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.59
+      value: 23.61
       objectReference: {fileID: 0}
     - target: {fileID: 95413700632302852, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.87
+      value: -2.71
       objectReference: {fileID: 0}
     - target: {fileID: 95413700632302852, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1381,48 +1412,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 156502120848920240, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
       propertyPath: m_Name
-      value: Square
+      value: Bed
       objectReference: {fileID: 0}
-    - target: {fileID: 1702544737746369946, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
-      propertyPath: bounceForce
-      value: 20
-      objectReference: {fileID: 0}
+    - target: {fileID: 3937329736937734882, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 35737df3f65201840a85f68fc73b251c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0155faf6aa0d4c84d8ba393647559e2e, type: 3}
---- !u!1 &940940801
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 940940802}
-  m_Layer: 0
-  m_Name: Hand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &940940802
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940940801}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 486410899}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346210849
 GameObject:
   m_ObjectHideFlags: 0
@@ -11009,4 +11009,4 @@ SceneRoots:
   - {fileID: 486410899}
   - {fileID: 1837524263}
   - {fileID: 1346210854}
-  - {fileID: 880547769}
+  - {fileID: 944828266}
