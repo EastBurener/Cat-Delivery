@@ -15,7 +15,7 @@ public class PickBag : MonoBehaviour
     public float verticalSpacing = 0.02f;
     public KeyCode dropKey = KeyCode.R;
     [Tooltip("投掷初始力量")]
-    public float throwForce = 10f;
+    public float throwForce = 1f;
 
     [Header("重量设置")]
     [Tooltip("单个包裹的重量（千克）")]
