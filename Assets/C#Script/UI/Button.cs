@@ -6,10 +6,21 @@ using UnityEngine.SceneManagement;
 public class Button : MonoBehaviour
 {
     public string nextScene;
+    public string startScene;
 
     public void NextScene()
     {
         SceneManager.LoadScene(nextScene);
+    }
+    
+    public void Menu()
+    {
+        SceneManager.LoadScene(startScene);
+    }
+
+    public void ReTry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void quit()
     {
