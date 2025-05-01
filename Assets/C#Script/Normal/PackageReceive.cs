@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PackageReceive : MonoBehaviour
 {
-    public int allPackage;          // 需要运送的总包裹数（在Inspector设置）
+    public GameDate_SO GameDate;
     public GameObject victoryUI;     // 拖入胜利UI对象（需提前禁用）
     private int package;
 
@@ -21,7 +21,7 @@ public class PackageReceive : MonoBehaviour
             package++;
             Destroy(other.gameObject);
 
-            if (package >= allPackage)
+            if (package >= GameDate.allPackage)
             {
                 ShowVictoryUI();
             }

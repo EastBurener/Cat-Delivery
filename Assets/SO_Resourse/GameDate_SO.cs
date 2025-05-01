@@ -8,9 +8,9 @@ public class GameDate_SO : ScriptableObject
 {
     public double blood;
     public double maxBlood;
-    public int allPackage;
-    public int ownPackage;
-    public int givePackage;
+    public int allPackage;//总包裹数
+    public int ownPackage;//猫手头上的包裹数
+    public int givePackage;//已提交包裹数
     public float totalWeight = 1f;
 
     public Vector2 startPos = new Vector2();
