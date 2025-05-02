@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blood: 0
   maxBlood: 0
-  allPackage: 0
+  allPackage: 1
   ownPackage: 0
-  givePackage: 0
+  givePackage: 1
   totalWeight: 1
   startPos: {x: 0, y: 0}
   endPos: {x: 0, y: 0}

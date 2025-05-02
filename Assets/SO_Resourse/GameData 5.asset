@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blood: 0
   maxBlood: 0
-  allPackage: 0
+  allPackage: 1
   ownPackage: 0
   givePackage: 0
   totalWeight: 1

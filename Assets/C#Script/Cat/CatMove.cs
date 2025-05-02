@@ -128,10 +128,9 @@ public class CatMove : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (jumpNum == 0)
-        {
+        
             StartCoroutine(RecoverJump());
-        }
+        
     }
     private System.Collections.IEnumerator RecoverJump()
     {

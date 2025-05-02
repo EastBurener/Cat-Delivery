@@ -6,8 +6,8 @@ public class ESCcontrol : MonoBehaviour
 {
 
     public GameObject ESCmenu;
-    public GameObject Cat;
     private bool isPause = false;
+    public GameObject Cat;
     private MonoBehaviour targetScript;
 
     void Start()

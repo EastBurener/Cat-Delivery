@@ -10,6 +10,7 @@ public class Button : MonoBehaviour
 
     public void NextScene()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(nextScene);
     }
     
@@ -20,6 +21,7 @@ public class Button : MonoBehaviour
 
     public void ReTry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void quit()

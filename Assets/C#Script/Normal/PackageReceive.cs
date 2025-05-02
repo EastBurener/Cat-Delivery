@@ -6,10 +6,12 @@ public class PackageReceive : MonoBehaviour
 {
     public GameDate_SO GameDate;
     public GameObject victoryUI;     // 拖入胜利UI对象（需提前禁用）
-    private int package;
+    public GameObject Cat;
+    private MonoBehaviour targetScript;
 
     private void Start()
     {
+        targetScript = Cat.GetComponent<MonoBehaviour>();
         if (victoryUI != null)
             victoryUI.SetActive(false); // 确保开始时隐藏胜利UI
     }
@@ -18,10 +20,10 @@ public class PackageReceive : MonoBehaviour
     {
         if (other.CompareTag("Package"))
         {
-            package++;
+            GameDate.givePackage++;
             Destroy(other.gameObject);
 
-            if (package >= GameDate.allPackage)
+            if (GameDate.givePackage >= GameDate.allPackage)
             {
                 ShowVictoryUI();
             }
@@ -34,6 +36,7 @@ public class PackageReceive : MonoBehaviour
         {
             victoryUI.SetActive(true);
             Time.timeScale = 0f; // 暂停游戏（可选）
+            targetScript.enabled = false;
         }
         else
         {
