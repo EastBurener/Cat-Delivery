@@ -2660,7 +2660,7 @@ MonoBehaviour:
   stackAnchor: {fileID: 940940802}
   verticalSpacing: 0.02
   dropKey: 114
-  throwForce: 10
+  throwForce: 5
   weightPerPackage: 0.5
   packageCounterText: {fileID: 0}
   packageStack: []
@@ -3083,11 +3083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1662351030745840801, guid: a9b72d636769b744eb4b807e152205b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.99
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 1662351030745840801, guid: a9b72d636769b744eb4b807e152205b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5378
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1662351030745840801, guid: a9b72d636769b744eb4b807e152205b6, type: 3}
       propertyPath: m_LocalPosition.z

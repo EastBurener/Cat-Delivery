@@ -1226,7 +1226,7 @@ MonoBehaviour:
   stackAnchor: {fileID: 940940802}
   verticalSpacing: 0.02
   dropKey: 114
-  throwForce: 2
+  throwForce: 5
   weightPerPackage: 0.5
   packageCounterText: {fileID: 0}
   packageStack: []
