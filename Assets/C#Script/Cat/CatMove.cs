@@ -46,11 +46,10 @@ public class CatMove : MonoBehaviour
     {
         if (IsMobilePlatform)
         {
-            // 暂空，后续优化
+            mobilePower();
         }
         else
         {
-            Debug.Log(jumpNum);
             PCpower();
         }
     }
@@ -73,7 +72,6 @@ public class CatMove : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero, Mathf.Infinity, clickableLayer);
 
             GameDate.startPos = Input.mousePosition;
-
             start = true;
             lr.enabled = true; // 显示轨迹
         }
@@ -85,6 +83,7 @@ public class CatMove : MonoBehaviour
             GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
             // 总重量越大，弹射力越小
             GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
+            Debug.Log(GameDate.totalWeight);
             UpdateTrajectory();
         }
         if (Input.GetMouseButtonUp(0) && start)
@@ -96,6 +95,34 @@ public class CatMove : MonoBehaviour
         }
     }
 
+    public void mobilePower() {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+            Vector2 clickPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero, Mathf.Infinity, clickableLayer);
+
+            GameDate.startPos = Input.mousePosition;
+
+            start = true;
+            lr.enabled = true; // 显示轨迹
+        }
+        if (start) {
+            GameDate.endPos = Input.mousePosition;
+            GameDate.distance = Vector2.Distance(GameDate.startPos, GameDate.endPos);
+            GameDate.distance = GameDate.distance > maxPower ? maxPower : GameDate.distance;
+            GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
+            // 总重量越大，弹射力越小
+            GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
+            UpdateTrajectory();
+        }
+        if(Input.GetTouch(0).phase == TouchPhase.Canceled)
+        {
+            start = false;
+            rb.AddForce(GameDate.force, ForceMode2D.Impulse);
+            lr.enabled = false;
+            jumpNum -= 1;
+        }
+    }
+    //抛物线部分
     private void UpdateTrajectory()
     {
         Vector2 startPos = transform.position;
