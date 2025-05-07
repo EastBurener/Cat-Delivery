@@ -16,11 +16,7 @@ public class CollisionHurt : MonoBehaviour
         GameDate.blood = 100;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float relativeV = collision.relativeVelocity.magnitude;

@@ -32,18 +32,27 @@ public class CatMove : MonoBehaviour
 
     private void Start()
     {
-        GameDate.totalWeight = 1f;
+        GameDate.totalWeight = 1f; // 或者你想要的猫的基础重量
         jumpNum = 2;
         rb = Cat.GetComponent<Rigidbody2D>();
+        rb.mass = GameDate.totalWeight; // <<<< 新增：同步初始质量
+
         pickBag = Cat.GetComponent<PickBag>();
         mainCamera = Camera.main;
         lr = Cat.GetComponent<LineRenderer>();
         lr.positionCount = lrPoints;
-        lr.enabled = false; // 初始时隐藏
+        lr.enabled = false;
     }
 
     private void Update()
     {
+        // 确保 rb.mass 与 GameDate.totalWeight 同步
+        if (rb != null && rb.mass != GameDate.totalWeight)
+        {
+            rb.mass = GameDate.totalWeight;
+            
+        }
+
         if (IsMobilePlatform)
         {
             mobilePower();
