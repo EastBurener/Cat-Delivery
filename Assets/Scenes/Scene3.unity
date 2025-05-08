@@ -1371,7 +1371,7 @@ MonoBehaviour:
   verticalSpacing: 0.02
   dropKey: 114
   throwForce: 5
-  weightPerPackage: 0.5
+  weightPerPackage: 0.47
   packageCounterText: {fileID: 0}
   packageStack: []
   detectedPackages: []
@@ -1501,10 +1501,10 @@ MonoBehaviour:
   smoothSpeed: 0.1
   offset: {x: 0, y: 0, z: -1}
   enableBounds: 1
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
+  minX: 5
+  maxX: 65
+  minY: 3
+  maxY: 10
 --- !u!1001 &648063907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9380,6 +9380,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReTry
       objectReference: {fileID: 0}
+    - target: {fileID: 4727601423454589403, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.30740356
+      objectReference: {fileID: 0}
     - target: {fileID: 5500214971140519749, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9460,6 +9464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6746449280401211175, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.52456665
+      objectReference: {fileID: 0}
     - target: {fileID: 6873765833482908558, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9475,6 +9483,14 @@ PrefabInstance:
     - target: {fileID: 7884946784589455116, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474338015108252664, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.010375977
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474338015108252664, guid: 401ac17b80b92e44fa39b11c5a04cc75, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5715332
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
