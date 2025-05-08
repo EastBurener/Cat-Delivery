@@ -123,7 +123,7 @@ public class CatMove : MonoBehaviour
             GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
             UpdateTrajectory();
         }
-        if(Input.GetTouch(0).phase == TouchPhase.Canceled)
+        if(Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             start = false;
             rb.AddForce(GameDate.force, ForceMode2D.Impulse);

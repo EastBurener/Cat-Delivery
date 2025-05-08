@@ -8,6 +8,7 @@ public class Button : MonoBehaviour
     public string nextScene;
     public string startScene;
 
+
     public void NextScene()
     {
         Time.timeScale = 1;
