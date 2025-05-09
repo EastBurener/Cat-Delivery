@@ -19,7 +19,7 @@ public class PickBag : MonoBehaviour
 
     [Header("重量设置")]
     [Tooltip("单个包裹的重量（千克）")]
-    public float weightPerPackage = 5;
+    public float weightPerPackage = 0.2f;
 
     [Header("UI显示")]
     public Text packageCounterText;

@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class ThrowPackage : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject mobileThrow;
+
     void Start()
     {
-        
+        if(IsMobilePlatform)
+            mobileThrow.SetActive(true);
+        if (!IsMobilePlatform)
+        {
+            mobileThrow.SetActive(false);
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    public void throwPackage()
+    { 
+
+    }
+    public static bool IsMobilePlatform
     {
-        
+        get
+        {
+            RuntimePlatform platform = Application.platform;
+            return platform == RuntimePlatform.Android ||
+                   platform == RuntimePlatform.IPhonePlayer;
+        }
     }
 }

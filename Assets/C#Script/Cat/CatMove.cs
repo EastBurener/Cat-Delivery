@@ -87,7 +87,7 @@ public class CatMove : MonoBehaviour
         if (start)
         {
             GameDate.endPos = Input.mousePosition;
-            GameDate.distance = Vector2.Distance(GameDate.startPos, GameDate.endPos);
+            GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos))/3;
             GameDate.distance = GameDate.distance > maxPower ? maxPower : GameDate.distance;
             GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
             // 总重量越大，弹射力越小
@@ -116,7 +116,7 @@ public class CatMove : MonoBehaviour
         }
         if (start) {
             GameDate.endPos = Input.mousePosition;
-            GameDate.distance = Vector2.Distance(GameDate.startPos, GameDate.endPos);
+            GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos))/3;
             GameDate.distance = GameDate.distance > maxPower ? maxPower : GameDate.distance;
             GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
             // 总重量越大，弹射力越小
