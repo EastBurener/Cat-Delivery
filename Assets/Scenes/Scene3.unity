@@ -1109,15 +1109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
-  Cat: {fileID: 486410894}
   clickableLayer:
     serializedVersion: 2
     m_Bits: 0
   powerSize: 0.1
   maxPower: 150
   lrPoints: 100
-  lrStep: 0.1
-  gravityAcceleration: 9.81
   lr: {fileID: 486410900}
 --- !u!58 &486410896
 CircleCollider2D:
@@ -1371,7 +1368,7 @@ MonoBehaviour:
   verticalSpacing: 0.02
   dropKey: 114
   throwForce: 5
-  weightPerPackage: 0.47
+  weightPerPackage: 0.2
   packageCounterText: {fileID: 0}
   packageStack: []
   detectedPackages: []
@@ -1501,9 +1498,9 @@ MonoBehaviour:
   smoothSpeed: 0.1
   offset: {x: 0, y: 0, z: -1}
   enableBounds: 1
-  minX: 5
+  minX: 3
   maxX: 65
-  minY: 3
+  minY: -1
   maxY: 10
 --- !u!1001 &648063907
 PrefabInstance:
