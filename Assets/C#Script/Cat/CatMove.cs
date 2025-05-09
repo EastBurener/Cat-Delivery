@@ -1,176 +1,252 @@
+// CatMove.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CatMove : MonoBehaviour
 {
-    public GameDate_SO GameDate;
-    public GameObject Cat;
+	public GameDate_SO GameDate;
 
-    private Rigidbody2D rb;
-    private PickBag pickBag;
-    public LayerMask clickableLayer;
-    private Camera mainCamera;
+	private Rigidbody2D rb;
+	private PickBag pickBag;
+	public LayerMask clickableLayer;
+	private Camera mainCamera;
 
-    private bool start;//是否开始弹射过程
-    private int jumpNum;//最大连续跳跃次数
+	private bool start;
+	private int jumpNum;
 
-    [Header("弹力系数")]
-    public float powerSize;
-    public float maxPower;
+	[Header("弹力系数")]
+	public float powerSize;
+	public float maxPower;
 
-    [Header("弹射参数")]
+	[Header("弹射参数")]
+	public int lrPoints = 100;
 
-    public int lrPoints = 100; // 轨迹点数
-    public float lrStep = 0.1f; // 轨迹时间步长
-    public float gravityAcceleration = 9.81f;
+	[Header("轨迹显示")]
+	public LineRenderer lr;
 
-    [Header("轨迹显示")]
-    public LineRenderer lr; // 抛物线轨迹渲染器
-    private Vector2 currentVelocity; // 当前预测速度
+	void OnEnable()
+	{
+		SceneManager.sceneLoaded += OnSceneLoaded;
+		Debug.Log($"[CatMove - {gameObject.scene.name}] OnEnable: Subscribed to sceneLoaded. Current jumpNum: {jumpNum}. Script enabled: {this.enabled}");
+	}
 
+	void OnDisable()
+	{
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+		Debug.Log($"[CatMove - {gameObject.scene.name}] OnDisable: Unsubscribed from sceneLoaded. Script enabled: {this.enabled}");
+	}
 
-    private void Start()
-    {
-        GameDate.totalWeight = 1f; // 或者你想要的猫的基础重量
-        jumpNum = 2;
-        rb = Cat.GetComponent<Rigidbody2D>();
-        rb.mass = GameDate.totalWeight; // <<<< 新增：同步初始质量
+	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		Debug.Log($"[CatMove] Scene '{scene.name}' loaded by mode '{mode}'.");
+		bool isPlayableLevel = (scene.name == "Scene1" ||
+								scene.name == "Scene2" ||
+								scene.name == "Scene3"); // << --- 修改为你实际的关卡场景名列表
 
-        pickBag = Cat.GetComponent<PickBag>();
-        mainCamera = Camera.main;
-        lr = Cat.GetComponent<LineRenderer>();
-        lr.positionCount = lrPoints;
-        lr.enabled = false;
-    }
+		if (isPlayableLevel)
+		{
+			Debug.Log($"[CatMove] Playable level '{scene.name}' detected. Ensuring Time.timeScale is 1 and resetting Cat state.");
+			Time.timeScale = 1f;
+			Debug.Log($"[CatMove] Time.timeScale set to 1f for playable level '{scene.name}'.");
+			ResetStateForNewLevel();
+			if (!this.enabled)
+			{
+				this.enabled = true;
+				Debug.Log($"[CatMove] Script was disabled, re-enabled itself for new playable level '{scene.name}'.");
+			}
+		}
+		else
+		{
+			Debug.Log($"[CatMove] Scene '{scene.name}' is not a designated playable level. Not resetting state. Current jumpNum: {jumpNum}, Time.timeScale: {Time.timeScale}");
+		}
+	}
 
-    private void Update()
-    {
-        // 确保 rb.mass 与 GameDate.totalWeight 同步
-        if (rb != null && rb.mass != GameDate.totalWeight)
-        {
-            rb.mass = GameDate.totalWeight;
-            
-        }
+	void ResetStateForNewLevel()
+	{
+		Debug.Log($"[CatMove] ResetStateForNewLevel called. Resetting jumpNum and other states.");
+		jumpNum = 2;
+		start = false;
+		if (lr != null) lr.enabled = false;
+		if (rb != null)
+		{
+			rb.velocity = Vector2.zero;
+			rb.angularVelocity = 0f;
+			if (rb.IsSleeping()) rb.WakeUp();
+		}
+		Debug.Log($"[CatMove] State reset. jumpNum: {jumpNum}, start: {start}");
+	}
 
-        if (IsMobilePlatform)
-        {
-            mobilePower();
-        }
-        else
-        {
-            PCpower();
-        }
-    }
+	private void Awake()
+	{
+		Debug.Log($"[CatMove - {gameObject.scene.name}] Awake called. Initializing components...");
+		rb = GetComponent<Rigidbody2D>();
+		if (rb == null) Debug.LogError("[CatMove] Rigidbody2D not found on this GameObject!", this);
 
-    public static bool IsMobilePlatform
-    {
-        get
-        {
-            RuntimePlatform platform = Application.platform;
-            return platform == RuntimePlatform.Android ||
-                   platform == RuntimePlatform.IPhonePlayer;
-        }
-    }
+		pickBag = GetComponent<PickBag>();
+		if (pickBag == null) Debug.LogWarning("[CatMove] PickBag component not found. (If not needed, this is fine)", this);
 
-    public void PCpower()
-    {
-        if (Input.GetMouseButtonDown(0)&&jumpNum!=0)
-        {
-            Vector2 clickPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero, Mathf.Infinity, clickableLayer);
+		mainCamera = Camera.main;
+		if (mainCamera == null) Debug.LogError("[CatMove] Main Camera not found! Ensure it has 'MainCamera' tag.", this);
 
-            GameDate.startPos = Input.mousePosition;
-            start = true;
-            lr.enabled = true; // 显示轨迹
-        }
-        if (start)
-        {
-            GameDate.endPos = Input.mousePosition;
-            GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos))/3;
-            GameDate.distance = GameDate.distance > maxPower ? maxPower : GameDate.distance;
-            GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
-            // 总重量越大，弹射力越小
-            GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
-            Debug.Log(GameDate.totalWeight);
-            UpdateTrajectory();
-        }
-        if (Input.GetMouseButtonUp(0) && start)
-        {
-            start = false;
-            rb.AddForce(GameDate.force, ForceMode2D.Impulse);
-            lr.enabled = false;
-            jumpNum -= 1;
-        }
-    }
+		lr = GetComponent<LineRenderer>();
+		if (lr != null) lr.positionCount = lrPoints;
+		else Debug.LogWarning("[CatMove] LineRenderer component not found. Trajectory will not be shown.", this);
 
-    public void mobilePower() {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-            Vector2 clickPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(clickPos, Vector2.zero, Mathf.Infinity, clickableLayer);
+		Debug.Log($"[CatMove - {gameObject.scene.name}] Awake - Initial Time.timeScale: {Time.timeScale}");
+	}
 
-            GameDate.startPos = Input.mousePosition;
+	private void Start()
+	{
+		if (GameDate != null)
+		{
+			GameDate.totalWeight = 1f;
+			if (rb != null) rb.mass = GameDate.totalWeight;
+		}
+		else Debug.LogError("[CatMove] GameDate_SO is not assigned in Inspector!", this);
 
-            start = true;
-            lr.enabled = true; // 显示轨迹
-        }
-        if (start) {
-            GameDate.endPos = Input.mousePosition;
-            GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos))/3;
-            GameDate.distance = GameDate.distance > maxPower ? maxPower : GameDate.distance;
-            GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
-            // 总重量越大，弹射力越小
-            GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
-            UpdateTrajectory();
-        }
-        if(Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            start = false;
-            rb.AddForce(GameDate.force, ForceMode2D.Impulse);
-            lr.enabled = false;
-            jumpNum -= 1;
-        }
-    }
-    //抛物线部分
-    private void UpdateTrajectory()
-    {
-        Vector2 startPos = transform.position;
-        float mass = GameDate.totalWeight;
-        Vector2 initialVelocity = GameDate.force / mass;
-        Vector2 gravity = Physics2D.gravity * mass; // 考虑全局重力与质量关系
-        float drag = GetComponent<Rigidbody2D>().drag; // 获取空气阻力系数
-        float timeStep = 0.05f; // 更小的时间步长提高精度
-        int maxSteps = Mathf.CeilToInt(lrPoints * lrStep / timeStep);
+		ResetStateForNewLevel();
+		Debug.Log($"[CatMove - {gameObject.scene.name}] Start completed. Time.timeScale: {Time.timeScale}, Script Enabled: {this.enabled}, jumpNum: {jumpNum}");
+	}
 
-        Vector2 currentPos = startPos;
-        Vector2 currentVelocity = initialVelocity;
+	private void Update()
+	{
+		if (GameDate != null && rb != null && rb.mass != GameDate.totalWeight)
+		{
+			rb.mass = GameDate.totalWeight;
+		}
+		if (IsMobilePlatform) mobilePower();
+		else PCpower();
+	}
 
-        for (int i = 0; i < lrPoints; i++)
-        {
-            // 累积时间（避免浮点误差）
-            double t = i * timeStep;
-
-            // 计算阻力影响（速度衰减）
-            Vector2 dragForce = -drag * currentVelocity;
-            Vector2 acceleration = (gravity + dragForce) / mass;
-
-            // 更新速度和位置（使用更精确的积分方法）
-            currentVelocity += acceleration * timeStep;
-            currentPos += currentVelocity * timeStep;
-
-            // 设置轨迹点
-            lr.SetPosition(i, currentPos);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-            StartCoroutine(RecoverJump());
-        
-    }
-    private System.Collections.IEnumerator RecoverJump()
-    {
-        yield return new WaitForSeconds(3f);
-        jumpNum = 2;
-    }
+	public static bool IsMobilePlatform
+	{
+		get
+		{
+			RuntimePlatform platform = Application.platform;
+			return platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer;
+		}
+	}
+	public void PCpower()
+	{
+		if (mainCamera == null || GameDate == null || Time.timeScale == 0f) return;
+		if (Input.GetMouseButtonDown(0) && jumpNum > 0)
+		{
+			Debug.Log($"[CatMove - PCpower] MouseButtonDown detected. jumpNum: {jumpNum}");
+			GameDate.startPos = Input.mousePosition;
+			start = true;
+			if (lr != null) lr.enabled = true;
+		}
+		if (start)
+		{
+			GameDate.endPos = Input.mousePosition;
+			GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos)) / 3f;
+			GameDate.distance = Mathf.Min(GameDate.distance, maxPower);
+			GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
+			if (GameDate.totalWeight <= 0) GameDate.totalWeight = 1f;
+			GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
+			UpdateTrajectory();
+		}
+		if (Input.GetMouseButtonUp(0) && start)
+		{
+			Debug.Log($"[CatMove - PCpower] MouseButtonUp detected. Applying force: {GameDate.force}");
+			start = false;
+			if (rb != null)
+			{
+				if (rb.IsSleeping()) rb.WakeUp();
+				rb.AddForce(GameDate.force, ForceMode2D.Impulse);
+			}
+			if (lr != null) lr.enabled = false;
+			jumpNum -= 1;
+			Debug.Log($"[CatMove] PC Jump! jumpNum remaining: {jumpNum}");
+		}
+	}
+	public void mobilePower()
+	{
+		if (mainCamera == null || GameDate == null || Input.touchCount == 0 || Time.timeScale == 0f) return;
+		Touch touch = Input.GetTouch(0);
+		if (touch.phase == TouchPhase.Began && jumpNum > 0)
+		{
+			Debug.Log($"[CatMove - mobilePower] TouchBegan detected. jumpNum: {jumpNum}");
+			GameDate.startPos = touch.position;
+			start = true;
+			if (lr != null) lr.enabled = true;
+		}
+		if (start)
+		{
+			GameDate.endPos = touch.position;
+			GameDate.distance = (Vector2.Distance(GameDate.startPos, GameDate.endPos)) / 3f;
+			GameDate.distance = Mathf.Min(GameDate.distance, maxPower);
+			GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
+			if (GameDate.totalWeight <= 0) GameDate.totalWeight = 1f;
+			GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
+			UpdateTrajectory();
+			if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+			{
+				Debug.Log($"[CatMove - mobilePower] TouchEnded/Canceled detected. Applying force: {GameDate.force}");
+				start = false;
+				if (rb != null)
+				{
+					if (rb.IsSleeping()) rb.WakeUp();
+					rb.AddForce(GameDate.force, ForceMode2D.Impulse);
+				}
+				if (lr != null) lr.enabled = false;
+				jumpNum -= 1;
+				Debug.Log($"[CatMove] Mobile Jump! jumpNum remaining: {jumpNum}");
+			}
+		}
+		else if (start && Input.touchCount == 0)
+		{
+			start = false;
+			if (lr != null) lr.enabled = false;
+			Debug.LogWarning("[CatMove] Touch ended unexpectedly (no Ended/Canceled phase during drag).");
+		}
+	}
+	private void UpdateTrajectory()
+	{
+		if (lr == null || GameDate == null || rb == null || !start) return;
+		Vector2 trajectoryStartPos = transform.position;
+		float currentMass = Mathf.Max(0.001f, GameDate.totalWeight);
+		Vector2 initialVelocity = GameDate.force / currentMass;
+		Vector2 gravityEffect = Physics2D.gravity * rb.gravityScale;
+		float drag = rb.drag;
+		float timeStep = 0.05f;
+		lr.positionCount = lrPoints;
+		Vector2 currentPredictedPos = trajectoryStartPos;
+		Vector2 currentPredictedVelocity = initialVelocity;
+		for (int i = 0; i < lrPoints; i++)
+		{
+			currentPredictedVelocity -= currentPredictedVelocity * drag * timeStep;
+			currentPredictedVelocity += gravityEffect * timeStep;
+			currentPredictedPos += currentPredictedVelocity * timeStep;
+			lr.SetPosition(i, currentPredictedPos);
+		}
+	}
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		Debug.Log($"[CatMove] Collision with {collision.gameObject.name}. Starting RecoverJump coroutine. Time.timeScale: {Time.timeScale}");
+		if (Time.timeScale > 0f && this.enabled)
+		{
+			StartCoroutine(RecoverJump());
+		}
+		else
+		{
+			Debug.LogWarning($"[CatMove] Collision detected but Time.timeScale is {Time.timeScale} or script is disabled. RecoverJump coroutine NOT started.");
+		}
+	}
+	private System.Collections.IEnumerator RecoverJump()
+	{
+		Debug.Log($"[CatMove] RecoverJump coroutine started. Waiting 3 seconds.");
+		yield return new WaitForSeconds(3f);
+		if (this.enabled)
+		{
+			jumpNum = 2;
+			Debug.Log($"[CatMove] jumpNum recovered to: {jumpNum} after 3s wait.");
+		}
+		else
+		{
+			Debug.LogWarning($"[CatMove] RecoverJump completed but CatMove script is currently disabled. jumpNum not recovered.");
+		}
+	}
 }
