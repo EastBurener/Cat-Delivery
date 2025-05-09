@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class ESCcontrol : MonoBehaviour
 {
-
+    public GameObject mobileThrow;
     public GameObject ESCmenu;
     private bool isPause = false;
     public GameObject Cat;
     private MonoBehaviour targetScript;
 
+    private void Awake()
+    {
+        //移动端丢弃按钮显示与否
+        if (IsMobilePlatform)
+            mobileThrow.SetActive(true);
+        if (!IsMobilePlatform)
+        {
+            mobileThrow.SetActive(false);
+            Destroy(mobileThrow);
+        }
+    }
     void Start()
     {
+        
+
         ESCmenu.SetActive(false);
         targetScript = Cat.GetComponent<MonoBehaviour>();
 
@@ -23,6 +36,7 @@ public class ESCcontrol : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("114514");
             ESCmenu.SetActive(true);
 
             if (isPause)
@@ -59,4 +73,14 @@ public class ESCcontrol : MonoBehaviour
 #endif
     }
 
-}
+
+    public static bool IsMobilePlatform//运行平台检测
+    {
+        get
+        {
+            RuntimePlatform platform = Application.platform;
+            return platform == RuntimePlatform.Android ||
+                   platform == RuntimePlatform.IPhonePlayer;
+        }
+    }
+}   

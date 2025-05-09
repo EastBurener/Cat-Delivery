@@ -80,7 +80,8 @@ public class LevelButton : MonoBehaviour
 
 		if (!isLocked && !string.IsNullOrEmpty(sceneNameToLoad))
 		{
-			SceneManager.LoadScene(sceneNameToLoad);
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(sceneNameToLoad);
 		}
 		else if (isLocked)
 		{

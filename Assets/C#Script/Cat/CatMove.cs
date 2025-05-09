@@ -29,43 +29,33 @@ public class CatMove : MonoBehaviour
 	void OnEnable()
 	{
 		SceneManager.sceneLoaded += OnSceneLoaded;
-		Debug.Log($"[CatMove - {gameObject.scene.name}] OnEnable: Subscribed to sceneLoaded. Current jumpNum: {jumpNum}. Script enabled: {this.enabled}");
 	}
 
 	void OnDisable()
 	{
 		SceneManager.sceneLoaded -= OnSceneLoaded;
-		Debug.Log($"[CatMove - {gameObject.scene.name}] OnDisable: Unsubscribed from sceneLoaded. Script enabled: {this.enabled}");
 	}
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
-		Debug.Log($"[CatMove] Scene '{scene.name}' loaded by mode '{mode}'.");
 		bool isPlayableLevel = (scene.name == "Scene1" ||
 								scene.name == "Scene2" ||
 								scene.name == "Scene3"); // << --- 修改为你实际的关卡场景名列表
 
 		if (isPlayableLevel)
 		{
-			Debug.Log($"[CatMove] Playable level '{scene.name}' detected. Ensuring Time.timeScale is 1 and resetting Cat state.");
 			Time.timeScale = 1f;
-			Debug.Log($"[CatMove] Time.timeScale set to 1f for playable level '{scene.name}'.");
 			ResetStateForNewLevel();
 			if (!this.enabled)
 			{
 				this.enabled = true;
-				Debug.Log($"[CatMove] Script was disabled, re-enabled itself for new playable level '{scene.name}'.");
 			}
 		}
-		else
-		{
-			Debug.Log($"[CatMove] Scene '{scene.name}' is not a designated playable level. Not resetting state. Current jumpNum: {jumpNum}, Time.timeScale: {Time.timeScale}");
-		}
+	
 	}
 
 	void ResetStateForNewLevel()
 	{
-		Debug.Log($"[CatMove] ResetStateForNewLevel called. Resetting jumpNum and other states.");
 		jumpNum = 2;
 		start = false;
 		if (lr != null) lr.enabled = false;
@@ -75,12 +65,10 @@ public class CatMove : MonoBehaviour
 			rb.angularVelocity = 0f;
 			if (rb.IsSleeping()) rb.WakeUp();
 		}
-		Debug.Log($"[CatMove] State reset. jumpNum: {jumpNum}, start: {start}");
 	}
 
 	private void Awake()
 	{
-		Debug.Log($"[CatMove - {gameObject.scene.name}] Awake called. Initializing components...");
 		rb = GetComponent<Rigidbody2D>();
 		if (rb == null) Debug.LogError("[CatMove] Rigidbody2D not found on this GameObject!", this);
 
@@ -94,7 +82,6 @@ public class CatMove : MonoBehaviour
 		if (lr != null) lr.positionCount = lrPoints;
 		else Debug.LogWarning("[CatMove] LineRenderer component not found. Trajectory will not be shown.", this);
 
-		Debug.Log($"[CatMove - {gameObject.scene.name}] Awake - Initial Time.timeScale: {Time.timeScale}");
 	}
 
 	private void Start()
