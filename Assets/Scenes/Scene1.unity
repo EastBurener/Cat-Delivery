@@ -7670,7 +7670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Scene2
-  startScene: SeleteLevel
+  startScene: StartScene
   GameDate: {fileID: 11400000, guid: 6475c59aca1976c4c9ce6068c0c2fe41, type: 2}
   pickBagController: {fileID: 486410901}
 --- !u!1 &7670026747777886745

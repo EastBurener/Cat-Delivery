@@ -811,6 +811,7 @@ GameObject:
   - component: {fileID: 37328218}
   - component: {fileID: 37328217}
   - component: {fileID: 37328216}
+  - component: {fileID: 37328219}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -868,6 +869,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37328219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37328215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d07fb23c85933c4083879ac702aea24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: 60
+  timerText: {fileID: 2002682915}
+  failureUI: {fileID: 7241921796569389043}
 --- !u!1 &255567532
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,6 +6236,85 @@ CircleCollider2D:
   m_Offset: {x: -0.0015275478, y: 0}
   serializedVersion: 2
   m_Radius: 0.5494554
+--- !u!1 &2002682913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002682914}
+  - component: {fileID: 2002682916}
+  - component: {fileID: 2002682915}
+  m_Layer: 5
+  m_Name: time
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2002682914
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002682913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 739641054187853391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -71.2297, y: -30.3864}
+  m_SizeDelta: {x: 142.4595, y: 60.7729}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2002682915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002682913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &2002682916
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002682913}
+  m_CullTransparentMesh: 1
 --- !u!1 &2045928254
 GameObject:
   m_ObjectHideFlags: 0
@@ -11686,6 +11781,7 @@ RectTransform:
   - {fileID: 2375548314544797123}
   - {fileID: 344211489}
   - {fileID: 775511017224319386}
+  - {fileID: 2002682914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12485,6 +12581,7 @@ GameObject:
   - component: {fileID: 2104212795763775217}
   - component: {fileID: 9091177401359181455}
   - component: {fileID: 8938768258903577240}
+  - component: {fileID: 9091177401359181456}
   m_Layer: 0
   m_Name: UIcontrol
   m_TagString: Untagged
@@ -12712,9 +12809,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Scene5
-  startScene: SeleteLevel
+  startScene: StartScene
   GameDate: {fileID: 11400000, guid: 025eed6ed35ad2848bbde388798a22a8, type: 2}
   pickBagController: {fileID: 486410901}
+--- !u!114 &9091177401359181456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787827740036601034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d07fb23c85933c4083879ac702aea24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: 60
+  timerText: {fileID: 0}
+  failureUI: {fileID: 7241921796569389043}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
