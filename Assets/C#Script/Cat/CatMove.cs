@@ -1,4 +1,3 @@
-// CatMove.cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,7 +50,7 @@ public class CatMove : MonoBehaviour
 				this.enabled = true;
 			}
 		}
-	
+
 	}
 
 	void ResetStateForNewLevel()
