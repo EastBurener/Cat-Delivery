@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicalPower: 100
   maxPhysicalPower: 100
-  blood: 0
-  maxBlood: 0
+  blood: 100
+  maxBlood: 100
   allPackage: 1
   ownPackage: 0
   givePackage: 0

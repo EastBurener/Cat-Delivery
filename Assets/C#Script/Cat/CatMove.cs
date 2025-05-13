@@ -162,23 +162,7 @@ public class CatMove : MonoBehaviour
 			if (lr != null) lr.enabled = false; // 隐藏轨迹线
 		}
 	}
-    private void FixedUpdate()
-    {
-        Vector2 velocity = rb.velocity;
-        float speedMagnitude = velocity.magnitude;
-        //静止时体力恢复
-        if (speedMagnitude == 0f && GameDate.physicalPower < 100)
-		{
-			GameDate.physicalPower += (staticRecover / 50);
-			return;
-		}
-		//移动时体力恢复
-		else if (GameDate.physicalPower < 100)
-		{
-			GameDate.physicalPower += (moveRecover / 50);
-			return;
-		}
-    }
+    
     // 移动端弹射力量计算（触摸输入版本）
     public void mobilePower()
 	{
@@ -212,7 +196,8 @@ public class CatMove : MonoBehaviour
 				{
 					if (rb.IsSleeping()) rb.WakeUp();
 					rb.AddForce(GameDate.force, ForceMode2D.Impulse);
-				}
+                    GameDate.physicalPower -= (20 + GameDate.distance / maxPower * 30);
+                }
 				if (lr != null) lr.enabled = false;
 			}
 		}
@@ -222,9 +207,25 @@ public class CatMove : MonoBehaviour
 			if (lr != null) lr.enabled = false;
 		}
 	}
-
-	// 更新弹射轨迹预测
-	private void UpdateTrajectory()
+    private void FixedUpdate()
+    {
+        Vector2 velocity = rb.velocity;
+        float speedMagnitude = velocity.magnitude;
+        //静止时体力恢复
+        if (speedMagnitude == 0f && GameDate.physicalPower < 100)
+        {
+            GameDate.physicalPower += (staticRecover / 50);
+            return;
+        }
+        //移动时体力恢复
+        else if (GameDate.physicalPower < 100)
+        {
+            GameDate.physicalPower += (moveRecover / 50);
+            return;
+        }
+    }
+    // 更新弹射轨迹预测
+    private void UpdateTrajectory()
 	{
 		if (lr == null || GameDate == null || rb == null || !start) return;
 

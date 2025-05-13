@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GameData 4
   m_EditorClassIdentifier: 
   physicalPower: 100
-  maxPhysicalPower: 0
-  blood: 0
-  maxBlood: 0
+  maxPhysicalPower: 100
+  blood: 100
+  maxBlood: 100
   allPackage: 2
   ownPackage: 0
   givePackage: 0
