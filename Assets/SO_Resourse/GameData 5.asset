@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2360d8785033c342b9084eb522870ef, type: 3}
   m_Name: GameData 5
   m_EditorClassIdentifier: 
+  physicalPower: 100
+  maxPhysicalPower: 0
   blood: 0
   maxBlood: 0
   allPackage: 2

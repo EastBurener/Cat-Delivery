@@ -8,14 +8,15 @@ public class CatMove : MonoBehaviour
 {
 	// 游戏数据脚本对象（ScriptableObject）
 	public GameDate_SO GameDate;
-
+	private float distance;
 	private Rigidbody2D rb;          // 2D刚体组件
 	private PickBag pickBag;          // 拾取背包组件
 	public LayerMask clickableLayer;  // 可点击层的遮罩
 	private Camera mainCamera;        // 主摄像机引用
+	private Collision2D collision;
 
-	private bool start;               // 弹射是否开始的标志
-	private float myPhysicalPower;    // 物理力量值（当前未使用）
+    private bool start;               // 弹射是否开始的标志
+	private float myPhysicalPower;    // 当前弹射所需体力
 
 	[Header("弹力系数")]
 	public float powerSize;           // 弹射力量乘数
@@ -24,7 +25,10 @@ public class CatMove : MonoBehaviour
 	[Header("弹射参数")]
 	public int lrPoints = 100;        // 轨迹线点的数量
 
-	[Header("轨迹显示")]
+	[Header("体力回复")]
+	public float moveRecover;
+	public float staticRecover;
+    [Header("轨迹显示")]
 	public LineRenderer lr;           // 轨迹线渲染组件
 
 	// 当脚本启用时注册场景加载事件
@@ -136,7 +140,9 @@ public class CatMove : MonoBehaviour
 		{
 			GameDate.endPos = Input.mousePosition;
 			// 计算力量大小（限制最大力量）
-			GameDate.distance = Mathf.Min(Vector2.Distance(GameDate.startPos, GameDate.endPos) / 3f, maxPower);
+			distance = Mathf.Min(Vector2.Distance(GameDate.startPos, GameDate.endPos) / 3f, maxPower);
+            GameDate.distance = VerifyMaxdistance(distance);
+
 			GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized; // 计算方向
 			if (GameDate.totalWeight <= 0) GameDate.totalWeight = 1f;
 			GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
@@ -151,13 +157,30 @@ public class CatMove : MonoBehaviour
 			{
 				if (rb.IsSleeping()) rb.WakeUp();
 				rb.AddForce(GameDate.force, ForceMode2D.Impulse); // 施加冲量
+				GameDate.physicalPower -= (20 + GameDate.distance / maxPower * 30);
 			}
 			if (lr != null) lr.enabled = false; // 隐藏轨迹线
 		}
 	}
-
-	// 移动端弹射力量计算（触摸输入版本）
-	public void mobilePower()
+    private void FixedUpdate()
+    {
+        Vector2 velocity = rb.velocity;
+        float speedMagnitude = velocity.magnitude;
+        //静止时体力恢复
+        if (speedMagnitude == 0f && GameDate.physicalPower < 100)
+		{
+			GameDate.physicalPower += (staticRecover / 50);
+			return;
+		}
+		//移动时体力恢复
+		else if (GameDate.physicalPower < 100)
+		{
+			GameDate.physicalPower += (moveRecover / 50);
+			return;
+		}
+    }
+    // 移动端弹射力量计算（触摸输入版本）
+    public void mobilePower()
 	{
 		if (mainCamera == null || GameDate == null || Input.touchCount == 0 || Time.timeScale == 0f) return;
 		Touch touch = Input.GetTouch(0);
@@ -174,8 +197,9 @@ public class CatMove : MonoBehaviour
 		if (start)
 		{
 			GameDate.endPos = touch.position;
-			GameDate.distance = Mathf.Min(Vector2.Distance(GameDate.startPos, GameDate.endPos) / 3f, maxPower);
-			GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
+            distance = Mathf.Min(Vector2.Distance(GameDate.startPos, GameDate.endPos) / 3f, maxPower);
+            GameDate.distance = VerifyMaxdistance(distance);
+            GameDate.direction = (GameDate.startPos - GameDate.endPos).normalized;
 			if (GameDate.totalWeight <= 0) GameDate.totalWeight = 1f;
 			GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
 			UpdateTrajectory();
@@ -224,5 +248,16 @@ public class CatMove : MonoBehaviour
 			currentPredictedPos += currentPredictedVelocity * timeStep;            // 更新位置
 			lr.SetPosition(i, currentPredictedPos);                               // 设置轨迹点位置
 		}
+	}
+	//检测当前体力下最大跳跃的力
+	private float VerifyMaxdistance(float inputDistance)
+	{
+		float outputDistance=0;
+		myPhysicalPower = 20 + inputDistance / maxPower * 30;
+		if (myPhysicalPower < GameDate.physicalPower)
+            return inputDistance;
+        else
+			outputDistance =(GameDate.physicalPower-20)*maxPower/30;
+		return outputDistance;
 	}
 }

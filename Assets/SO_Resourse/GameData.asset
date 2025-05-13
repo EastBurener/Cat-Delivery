@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2360d8785033c342b9084eb522870ef, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  blood: 60
+  physicalPower: 100
+  maxPhysicalPower: 0
+  blood: 100
   maxBlood: 100
   allPackage: 0
   ownPackage: 0
   givePackage: 0
   totalWeight: 1
-  startPos: {x: 1014.0001, y: 553}
-  endPos: {x: 685, y: 257.00003}
-  direction: {x: 0.74340665, y: 0.6688397}
-  force: {x: 11.151099, y: 10.032596}
-  distance: 150
+  startPos: {x: 0, y: 0}
+  endPos: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  force: {x: 0, y: 0}
+  distance: 0

@@ -10,10 +10,7 @@ public class BloodUI : MonoBehaviour
     public GameDate_SO GameDate;
     private float lerpSpeed=3f;
 
-    private void Start()
-    {
-
-    }
+    
     private void Update()
     {
 
@@ -21,7 +18,7 @@ public class BloodUI : MonoBehaviour
     }
     private void BloodFill()
     {
-        blood.fillAmount = Mathf.Lerp(blood.fillAmount,(float)(GameDate.blood /GameDate.maxBlood),lerpSpeed*Time.deltaTime);
+        blood.fillAmount = Mathf.Lerp(blood.fillAmount,(float)(GameDate.physicalPower /GameDate.maxPhysicalPower),lerpSpeed*Time.deltaTime);
     }
 
 }

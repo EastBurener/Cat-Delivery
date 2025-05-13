@@ -33,12 +33,13 @@ public class Button : MonoBehaviour // 脚本名与您提供的一致
     public void ReTry()
     {
         Time.timeScale = 1;
-        GameDate.ResetData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameDate.ResetData();
     }
 
-    public void QuitGame() // 之前是 quit()，建议用 QuitGame() 遵循C#命名规范
+    public void QuitGame() 
     {
+        GameDate.ResetData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

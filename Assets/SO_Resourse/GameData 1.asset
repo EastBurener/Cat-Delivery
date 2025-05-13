@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2360d8785033c342b9084eb522870ef, type: 3}
   m_Name: GameData 1
   m_EditorClassIdentifier: 
+  physicalPower: 100
+  maxPhysicalPower: 100
   blood: 0
   maxBlood: 0
   allPackage: 1
   ownPackage: 0
-  givePackage: 5
+  givePackage: 0
   totalWeight: 1
   startPos: {x: 0, y: 0}
   endPos: {x: 0, y: 0}
