@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e81272f078c9d44d973fda47362702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
   clickableLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c52b0c24350e45942e23240f3ceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
   stackAnchor: {fileID: 940940802}
   verticalSpacing: 0.02
   dropKey: 114
@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ba2814416cc2e468f75d439c5c2e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
   minHurtmomentum: 20
   momentum1: 30
   momentum2: 40
@@ -25933,7 +25933,7 @@ PrefabInstance:
     - target: {fileID: 6454849678703758973, guid: 20ac7f2910be349468a4e4375a8571d8, type: 3}
       propertyPath: GameDate
       value: 
-      objectReference: {fileID: 11400000, guid: 54a244f8f2f78a240aba21632fcc0d79, type: 2}
+      objectReference: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
     - target: {fileID: 6454849678703758973, guid: 20ac7f2910be349468a4e4375a8571d8, type: 3}
       propertyPath: victoryUI
       value: 
@@ -27953,7 +27953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c153e2ede50dd5e4f8b139a2555a6196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameUI: {fileID: 0}
+  GameUI: {fileID: 4089198468099722944}
   ESCmenu: {fileID: 7241921797215534910}
   Cat: {fileID: 486410894}
 --- !u!222 &9058077751803595036
@@ -27978,7 +27978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: Scene3
   startScene: StartScene
-  GameDate: {fileID: 11400000, guid: 1b4021c234982fe49a36cd2e520bb54f, type: 2}
+  GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
   pickBagController: {fileID: 486410901}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

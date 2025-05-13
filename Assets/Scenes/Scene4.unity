@@ -22151,7 +22151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c153e2ede50dd5e4f8b139a2555a6196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameUI: {fileID: 0}
+  GameUI: {fileID: 1618429617924364410}
   ESCmenu: {fileID: 7241921796703469901}
   Cat: {fileID: 486410894}
 --- !u!222 &9058077752025229949
