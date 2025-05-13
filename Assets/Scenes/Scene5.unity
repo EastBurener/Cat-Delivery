@@ -27581,6 +27581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad138664cc2ea69408e623850b96dd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
 --- !u!222 &7877430154218646411
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27952,7 +27953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c153e2ede50dd5e4f8b139a2555a6196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobileThrow: {fileID: 1892466068308132293}
+  GameUI: {fileID: 0}
   ESCmenu: {fileID: 7241921797215534910}
   Cat: {fileID: 486410894}
 --- !u!222 &9058077751803595036

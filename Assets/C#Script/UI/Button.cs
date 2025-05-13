@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour // 脚本名与您提供的一致
@@ -32,6 +33,7 @@ public class Button : MonoBehaviour // 脚本名与您提供的一致
     public void ReTry()
     {
         Time.timeScale = 1;
+        GameDate.ResetData();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -44,9 +46,7 @@ public class Button : MonoBehaviour // 脚本名与您提供的一致
 #endif
     }
 
-    // --- 新增：丢弃包裹的方法 ---
-    [Tooltip("此方法用于触发丢弃包裹的动作。请确保 pickBagController 已被正确赋值，并且 PickBag 脚本中的 DropTopPackage 方法是 public 的。")]
-    public void ThrowPackage() // 方法名可以自定义，例如 ExecuteDropPackageAction
+    public void ThrowPackage() 
     {
         if (pickBagController != null)
         {

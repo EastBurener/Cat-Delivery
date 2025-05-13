@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c52b0c24350e45942e23240f3ceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: 6475c59aca1976c4c9ce6068c0c2fe41, type: 2}
   stackAnchor: {fileID: 940940802}
   verticalSpacing: 0.02
   dropKey: 114
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ba2814416cc2e468f75d439c5c2e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: 6475c59aca1976c4c9ce6068c0c2fe41, type: 2}
   minHurtmomentum: 20
   momentum1: 30
   momentum2: 40
@@ -1675,11 +1675,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945943282}
   m_CullTransparentMesh: 1
---- !u!1 &1352833273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1892466068441909219, guid: 76554217a0928b54ca3804b65d7a509d, type: 3}
-  m_PrefabInstance: {fileID: 3466968208983760876}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1431509476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,6 +2570,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940960134}
   m_CullTransparentMesh: 1
+--- !u!1 &1955274744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4089198467965946086, guid: 76554217a0928b54ca3804b65d7a509d, type: 3}
+  m_PrefabInstance: {fileID: 3466968208983760876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2045928254
 GameObject:
   m_ObjectHideFlags: 0
@@ -6662,6 +6662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad138664cc2ea69408e623850b96dd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDate: {fileID: 11400000, guid: 6475c59aca1976c4c9ce6068c0c2fe41, type: 2}
 --- !u!114 &3083747060925604185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7785,7 +7786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c153e2ede50dd5e4f8b139a2555a6196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobileThrow: {fileID: 1352833273}
+  GameUI: {fileID: 1955274744}
   ESCmenu: {fileID: 6532461471797339122}
   Cat: {fileID: 486410894}
 --- !u!1 &8032192540538238787

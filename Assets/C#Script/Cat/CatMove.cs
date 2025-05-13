@@ -69,13 +69,10 @@ public class CatMove : MonoBehaviour
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		if (rb == null) Debug.LogError("[CatMove] Rigidbody2D not found on this GameObject!", this);
 
 		pickBag = GetComponent<PickBag>();
-		if (pickBag == null) Debug.LogWarning("[CatMove] PickBag component not found. (If not needed, this is fine)", this);
 
 		mainCamera = Camera.main;
-		if (mainCamera == null) Debug.LogError("[CatMove] Main Camera not found! Ensure it has 'MainCamera' tag.", this);
 
 		lr = GetComponent<LineRenderer>();
 		if (lr != null) lr.positionCount = lrPoints;
@@ -93,7 +90,6 @@ public class CatMove : MonoBehaviour
 		else Debug.LogError("[CatMove] GameDate_SO is not assigned in Inspector!", this);
 
 		ResetStateForNewLevel();
-		Debug.Log($"[CatMove - {gameObject.scene.name}] Start completed. Time.timeScale: {Time.timeScale}, Script Enabled: {this.enabled}, jumpNum: {jumpNum}");
 	}
 
 	private void Update()
@@ -119,7 +115,6 @@ public class CatMove : MonoBehaviour
 		if (mainCamera == null || GameDate == null || Time.timeScale == 0f) return;
 		if (Input.GetMouseButtonDown(0) && jumpNum > 0)
 		{
-			Debug.Log($"[CatMove - PCpower] MouseButtonDown detected. jumpNum: {jumpNum}");
 			GameDate.startPos = Input.mousePosition;
 			start = true;
 			if (lr != null) lr.enabled = true;
@@ -136,7 +131,6 @@ public class CatMove : MonoBehaviour
 		}
 		if (Input.GetMouseButtonUp(0) && start)
 		{
-			Debug.Log($"[CatMove - PCpower] MouseButtonUp detected. Applying force: {GameDate.force}");
 			start = false;
 			if (rb != null)
 			{
@@ -145,7 +139,6 @@ public class CatMove : MonoBehaviour
 			}
 			if (lr != null) lr.enabled = false;
 			jumpNum -= 1;
-			Debug.Log($"[CatMove] PC Jump! jumpNum remaining: {jumpNum}");
 		}
 	}
 	public void mobilePower()
@@ -154,7 +147,6 @@ public class CatMove : MonoBehaviour
 		Touch touch = Input.GetTouch(0);
 		if (touch.phase == TouchPhase.Began && jumpNum > 0)
 		{
-			Debug.Log($"[CatMove - mobilePower] TouchBegan detected. jumpNum: {jumpNum}");
 			GameDate.startPos = touch.position;
 			start = true;
 			if (lr != null) lr.enabled = true;
@@ -170,7 +162,6 @@ public class CatMove : MonoBehaviour
 			UpdateTrajectory();
 			if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
 			{
-				Debug.Log($"[CatMove - mobilePower] TouchEnded/Canceled detected. Applying force: {GameDate.force}");
 				start = false;
 				if (rb != null)
 				{
@@ -179,14 +170,12 @@ public class CatMove : MonoBehaviour
 				}
 				if (lr != null) lr.enabled = false;
 				jumpNum -= 1;
-				Debug.Log($"[CatMove] Mobile Jump! jumpNum remaining: {jumpNum}");
 			}
 		}
 		else if (start && Input.touchCount == 0)
 		{
 			start = false;
 			if (lr != null) lr.enabled = false;
-			Debug.LogWarning("[CatMove] Touch ended unexpectedly (no Ended/Canceled phase during drag).");
 		}
 	}
 	private void UpdateTrajectory()
@@ -211,7 +200,6 @@ public class CatMove : MonoBehaviour
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log($"[CatMove] Collision with {collision.gameObject.name}. Starting RecoverJump coroutine. Time.timeScale: {Time.timeScale}");
 		if (Time.timeScale > 0f && this.enabled)
 		{
 			StartCoroutine(RecoverJump());
@@ -223,7 +211,6 @@ public class CatMove : MonoBehaviour
 	}
 	private System.Collections.IEnumerator RecoverJump()
 	{
-		Debug.Log($"[CatMove] RecoverJump coroutine started. Waiting 3 seconds.");
 		yield return new WaitForSeconds(3f);
 		if (this.enabled)
 		{

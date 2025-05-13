@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ESCcontrol : MonoBehaviour
 {
-    public GameObject mobileThrow;
+    public GameObject GameUI;
     public GameObject ESCmenu;
     private bool isPause = false;
     public GameObject Cat;
@@ -12,13 +12,13 @@ public class ESCcontrol : MonoBehaviour
 
     private void Awake()
     {
-        //移动端丢弃按钮显示与否
+        //移动端按钮显示与否
         if (IsMobilePlatform)
-            mobileThrow.SetActive(true);
+            GameUI.SetActive(true);
         if (!IsMobilePlatform)
         {
-            mobileThrow.SetActive(false);
-            Destroy(mobileThrow);
+            GameUI.SetActive(false);
+
         }
     }
     void Start()
@@ -36,7 +36,6 @@ public class ESCcontrol : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("114514");
             ESCmenu.SetActive(true);
 
             if (isPause)
@@ -53,6 +52,7 @@ public class ESCcontrol : MonoBehaviour
     public void keepstop()//进入暂停界面
     {
         isPause = true;
+        if(IsMobilePlatform) GameUI.SetActive(false);
         ESCmenu.SetActive(true);
         Time.timeScale = 0;
         targetScript.enabled = false;
@@ -60,6 +60,7 @@ public class ESCcontrol : MonoBehaviour
     public void back()//继续游戏
     {
         ESCmenu.SetActive(false);
+        if(IsMobilePlatform) GameUI.SetActive(true);
         isPause = false;
         Time.timeScale = 1;
         targetScript.enabled = true;

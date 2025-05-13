@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e81272f078c9d44d973fda47362702d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: 025eed6ed35ad2848bbde388798a22a8, type: 2}
   clickableLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c52b0c24350e45942e23240f3ceef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: 025eed6ed35ad2848bbde388798a22a8, type: 2}
   stackAnchor: {fileID: 940940802}
   verticalSpacing: 0.02
   dropKey: 114
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ba2814416cc2e468f75d439c5c2e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDate: {fileID: 11400000, guid: 715eb6d730b3b8148bec105ee9acee80, type: 2}
+  GameDate: {fileID: 11400000, guid: 025eed6ed35ad2848bbde388798a22a8, type: 2}
   minHurtmomentum: 20
   momentum1: 30
   momentum2: 40
@@ -20841,6 +20841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad138664cc2ea69408e623850b96dd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameDate: {fileID: 11400000, guid: 025eed6ed35ad2848bbde388798a22a8, type: 2}
 --- !u!1 &3785683002890196863
 GameObject:
   m_ObjectHideFlags: 0
@@ -22150,7 +22151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c153e2ede50dd5e4f8b139a2555a6196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobileThrow: {fileID: 3785683002890196863}
+  GameUI: {fileID: 0}
   ESCmenu: {fileID: 7241921796703469901}
   Cat: {fileID: 486410894}
 --- !u!222 &9058077752025229949

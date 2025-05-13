@@ -19,6 +19,29 @@ public class GameDate_SO : ScriptableObject
     public Vector2 force = new Vector2();
     public float distance;
 
+    private const int initialOwnPackage = 0;
+    private const int initialGivePackage = 0;
+    private const float initialTotalWeight = 1f; // 与字段声明的默认值一致
+    private static readonly Vector2 initialVector = Vector2.zero;
+    private const float initialDistance = 0f;
 
+    // --- 重置方法 ---
+    public void ResetData()
+    {
+        blood = maxBlood;
+
+        ownPackage = initialOwnPackage;
+        givePackage = initialGivePackage;
+
+        totalWeight = initialTotalWeight;
+
+        startPos = initialVector; 
+        endPos = initialVector;
+        direction = initialVector;
+        force = initialVector;
+        distance = initialDistance;
+
+        Debug.Log("GameDate_SO data has been reset."); // 用于调试确认
+    }
 }
 
