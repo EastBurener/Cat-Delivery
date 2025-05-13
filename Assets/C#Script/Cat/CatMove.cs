@@ -13,7 +13,7 @@ public class CatMove : MonoBehaviour
 	private Camera mainCamera;
 
 	private bool start;
-	private int jumpNum;
+	private float myPhysicalPower;
 
 	[Header("µ¯Á¦ÏµÊý")]
 	public float powerSize;
@@ -55,7 +55,6 @@ public class CatMove : MonoBehaviour
 
 	void ResetStateForNewLevel()
 	{
-		jumpNum = 2;
 		start = false;
 		if (lr != null) lr.enabled = false;
 		if (rb != null)
@@ -113,7 +112,7 @@ public class CatMove : MonoBehaviour
 	public void PCpower()
 	{
 		if (mainCamera == null || GameDate == null || Time.timeScale == 0f) return;
-		if (Input.GetMouseButtonDown(0) && jumpNum > 0)
+		if (Input.GetMouseButtonDown(0))
 		{
 			GameDate.startPos = Input.mousePosition;
 			start = true;
@@ -128,6 +127,7 @@ public class CatMove : MonoBehaviour
 			if (GameDate.totalWeight <= 0) GameDate.totalWeight = 1f;
 			GameDate.force = powerSize * GameDate.direction * GameDate.distance / GameDate.totalWeight;
 			UpdateTrajectory();
+
 		}
 		if (Input.GetMouseButtonUp(0) && start)
 		{
@@ -138,14 +138,14 @@ public class CatMove : MonoBehaviour
 				rb.AddForce(GameDate.force, ForceMode2D.Impulse);
 			}
 			if (lr != null) lr.enabled = false;
-			jumpNum -= 1;
+
 		}
 	}
 	public void mobilePower()
 	{
 		if (mainCamera == null || GameDate == null || Input.touchCount == 0 || Time.timeScale == 0f) return;
 		Touch touch = Input.GetTouch(0);
-		if (touch.phase == TouchPhase.Began && jumpNum > 0)
+		if (touch.phase == TouchPhase.Began )
 		{
 			GameDate.startPos = touch.position;
 			start = true;
@@ -169,7 +169,6 @@ public class CatMove : MonoBehaviour
 					rb.AddForce(GameDate.force, ForceMode2D.Impulse);
 				}
 				if (lr != null) lr.enabled = false;
-				jumpNum -= 1;
 			}
 		}
 		else if (start && Input.touchCount == 0)
@@ -198,28 +197,5 @@ public class CatMove : MonoBehaviour
 			lr.SetPosition(i, currentPredictedPos);
 		}
 	}
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (Time.timeScale > 0f && this.enabled)
-		{
-			StartCoroutine(RecoverJump());
-		}
-		else
-		{
-			Debug.LogWarning($"[CatMove] Collision detected but Time.timeScale is {Time.timeScale} or script is disabled. RecoverJump coroutine NOT started.");
-		}
-	}
-	private System.Collections.IEnumerator RecoverJump()
-	{
-		yield return new WaitForSeconds(3f);
-		if (this.enabled)
-		{
-			jumpNum = 2;
-			Debug.Log($"[CatMove] jumpNum recovered to: {jumpNum} after 3s wait.");
-		}
-		else
-		{
-			Debug.LogWarning($"[CatMove] RecoverJump completed but CatMove script is currently disabled. jumpNum not recovered.");
-		}
-	}
+	
 }

@@ -22193,7 +22193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2038fc61af50e4995f29b27c44dc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: StartScene
+  nextScene: Scene5
   startScene: StartScene
   GameDate: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
   pickBagController: {fileID: 486410901}

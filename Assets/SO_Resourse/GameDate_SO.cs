@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class GameDate_SO : ScriptableObject
 {
     public double blood;
+    public float physicalPower;
     public double maxBlood;
     public int allPackage;//总包裹数
     public int ownPackage;//猫手头上的包裹数
