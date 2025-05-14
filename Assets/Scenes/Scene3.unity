@@ -1564,14 +1564,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameDate: {fileID: 11400000, guid: 54a244f8f2f78a240aba21632fcc0d79, type: 2}
-  minHurtmomentum: 20
-  momentum1: 30
-  momentum2: 40
-  maxHurtmomentum: 50
-  hurt1: 0
-  hurt2: 0
-  hurt3: 0
-  hurt4: 0
+  minHurtmomentum: 13
+  momentum1: 15
+  momentum2: 18
+  maxHurtmomentum: 20
+  hurt1: 15
+  hurt2: 25
+  hurt3: 40
+  hurt4: 50
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
