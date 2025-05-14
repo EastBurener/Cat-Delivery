@@ -1,84 +1,88 @@
 using UnityEngine;
-using UnityEngine.UI; // 确保引入了 UnityEngine.UI 命名空间
+using UnityEngine.UI; 
 
 public class CountdownTimer : MonoBehaviour
 {
-	[Header("基础设置")]
-	public float totalTime = 60f;    // 总计时长（秒）
-	public Text timerText;          // 拖入显示时间的Text组件
-	public GameObject failureUI;    // 失败界面UI
 
-	private float currentTime;
+	public Text countdownText;
+
+
+	public float timeRemaining = 60f; // 示例起始时间
+
+	private bool timerIsRunning = false;
+	// private Color originalTextColor; // 如果不使用富文本处理默认颜色，则用于存储原始颜色
 
 	void Start()
 	{
-		// 添加空引用检查
-		if (timerText == null)
+		if (countdownText == null)
 		{
-			Debug.LogError("CountdownTimer: timerText 没有在 Inspector 中被指定！");
-			// 可以选择禁用此脚本或给出更明确的错误提示，以避免后续的 NullReferenceException
-			enabled = false; // 禁用此脚本以防止进一步错误
+			Debug.LogError("CountdownText UI 元素未指定！脚本将禁用。");
+			enabled = false; // 如果UI未设置，则禁用脚本
 			return;
 		}
 
-		if (failureUI == null)
-		{
-			Debug.LogError("CountdownTimer: failureUI 没有在 Inspector 中被指定！");
-			enabled = false;
-			return;
-		}
+		// 如果不使用富文本来显示默认状态，或者计划切换整个文本颜色，
+		// 存储原始颜色会更有意义。
+		// 对于富文本，未标记的部分会保持其在检视器中设置的原始颜色。
+		// originalTextColor = countdownText.color;
 
-		currentTime = totalTime;
-		failureUI.SetActive(false);  // 初始隐藏失败界面
-		Time.timeScale = 1f;        // 确保游戏未暂停
+		StartTimer(timeRemaining); // 或者从其他地方触发此方法
+	}
+
+	public void StartTimer(float duration)
+	{
+		timeRemaining = duration;
+		timerIsRunning = true;
+		// 立即更新一次显示，以避免启动时的延迟
+		UpdateCountdownDisplay();
 	}
 
 	void Update()
 	{
-		if (currentTime > 0)
+		if (timerIsRunning)
 		{
-			currentTime -= Time.deltaTime;
-			UpdateTimerDisplay();
-		}
-		else
-		{
-			currentTime = 0;
-			// 在调用 GameOver 之前，确保 UpdateTimerDisplay 被调用一次，以显示0
-			UpdateTimerDisplay();
-			GameOver();
-		}
-	}
-
-	// 基本时间显示（仅数字）
-	void UpdateTimerDisplay()
-	{
-		// 再次检查，以防万一在运行时被设为 null
-		if (timerText != null)
-		{
-			// 显示整数秒（如：60）
-			timerText.text = Mathf.CeilToInt(currentTime).ToString();
-
-			// 或者显示分:秒格式（如：01:30）
-			// int minutes = Mathf.FloorToInt(currentTime / 60);
-			// int seconds = Mathf.FloorToInt(currentTime % 60);
-			// timerText.text = $"{minutes:00}:{seconds:00}";
-		}
-		else
-		{
-			Debug.LogError("CountdownTimer: timerText 在 UpdateTimerDisplay 中为 null！");
+			if (timeRemaining > 0)
+			{
+				timeRemaining -= Time.deltaTime;
+				UpdateCountdownDisplay();
+			}
+			else
+			{
+				timeRemaining = 0; // 确保时间不会显示为负数
+				timerIsRunning = false;
+				UpdateCountdownDisplay(); // 最后更新一次以显示0
+										  // 可选：触发一个事件，如 "TimerFinished()"
+				Debug.Log("时间到！");
+			}
 		}
 	}
 
-	void GameOver()
+	void UpdateCountdownDisplay()
 	{
-		Time.timeScale = 0f;        // 暂停游戏
-		if (failureUI != null)
+		// 向上取整得到显示的秒数
+		int displaySeconds = Mathf.CeilToInt(timeRemaining);
+
+		// 确保显示的秒数不会低于0，即使timeRemaining因浮点精度问题略微为负
+		displaySeconds = Mathf.Max(0, displaySeconds);
+
+		string timeText;
+
+		if (displaySeconds <= 10)
 		{
-			failureUI.SetActive(true);  // 显示失败界面
+			// 使用富文本将数字部分标红
+			timeText = $"<color=red>{displaySeconds}</color>";
 		}
 		else
 		{
-			Debug.LogError("CountdownTimer: failureUI 在 GameOver 中为 null！");
+			// 不需要颜色标签，使用在检视器中设置的默认颜色
+			timeText = $"{displaySeconds}";
 		}
+
+		// 只有当文本内容实际发生变化时才更新，以进行微小优化（可选）
+		if (countdownText.text != timeText)
+		{
+			countdownText.text = timeText;
+		}
+
 	}
 }
