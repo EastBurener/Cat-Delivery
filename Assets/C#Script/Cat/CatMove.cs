@@ -210,6 +210,7 @@ public class CatMove : MonoBehaviour
 	}
     private void FixedUpdate()
     {
+		Debug.Log("体力恢复");
         Vector2 velocity = rb.velocity;
         float speedMagnitude = velocity.magnitude;
         //静止时体力恢复
