@@ -1291,8 +1291,8 @@ MonoBehaviour:
   powerSize: 0.1
   maxPower: 150
   lrPoints: 100
-  moveRecover: 5
-  staticRecover: 10
+  moveRecover: 20
+  staticRecover: 35
   lr: {fileID: 486410900}
 --- !u!58 &486410896
 CircleCollider2D:
@@ -1564,13 +1564,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameDate: {fileID: 11400000, guid: 54a244f8f2f78a240aba21632fcc0d79, type: 2}
-  minHurtmomentum: 13
-  momentum1: 15
-  momentum2: 18
-  maxHurtmomentum: 20
+  minHurtmomentum: 18
+  momentum1: 24
+  momentum2: 28
+  maxHurtmomentum: 30
   hurt1: 15
   hurt2: 25
-  hurt3: 40
+  hurt3: 30
   hurt4: 50
 --- !u!1 &519420028
 GameObject:
