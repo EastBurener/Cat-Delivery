@@ -5,6 +5,7 @@ using UnityEngine;
 public class ESCcontrol : MonoBehaviour
 {
     public GameObject GameUI;
+    public GameObject StopDisappear;
     public GameObject ESCmenu;
     private bool isPause = false;
     public GameObject Cat;
@@ -26,6 +27,7 @@ public class ESCcontrol : MonoBehaviour
         
 
         ESCmenu.SetActive(false);
+        StopDisappear.SetActive(true);
         targetScript = Cat.GetComponent<MonoBehaviour>();
 
     }
@@ -54,13 +56,15 @@ public class ESCcontrol : MonoBehaviour
         isPause = true;
         if(IsMobilePlatform) GameUI.SetActive(false);
         ESCmenu.SetActive(true);
+        StopDisappear.SetActive(false);
         Time.timeScale = 0;
         targetScript.enabled = false;
     }
     public void back()//¼ÌÐøÓÎÏ·
     {
-        ESCmenu.SetActive(false);
-        if(IsMobilePlatform) GameUI.SetActive(true);
+        ESCmenu.SetActive(false); 
+        StopDisappear.SetActive(true);
+        if (IsMobilePlatform) GameUI.SetActive(true);
         isPause = false;
         Time.timeScale = 1;
         targetScript.enabled = true;

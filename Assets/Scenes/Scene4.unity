@@ -5509,6 +5509,14 @@ PrefabInstance:
       value: 956.85
       objectReference: {fileID: 0}
     - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5542,7 +5550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -478.425
+      value: -103
       objectReference: {fileID: 0}
     - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5555,6 +5563,22 @@ PrefabInstance:
     - target: {fileID: 2044213798234871310, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090895238063081064, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090895238063081064, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090895238063081064, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090895238063081064, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -563
       objectReference: {fileID: 0}
     - target: {fileID: 9064846720199902179, guid: b8d0c57e3cd619643aaa9b5673bda5cf, type: 3}
       propertyPath: m_Name

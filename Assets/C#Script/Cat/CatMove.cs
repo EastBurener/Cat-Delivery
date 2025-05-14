@@ -132,6 +132,7 @@ public class CatMove : MonoBehaviour
 		{
 			GameDate.startPos = Input.mousePosition;
 			start = true;
+			Debug.Log("进入");
 			if (lr != null) lr.enabled = true; // 显示轨迹线
 		}
 

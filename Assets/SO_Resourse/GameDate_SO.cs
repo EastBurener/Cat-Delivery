@@ -43,7 +43,6 @@ public class GameDate_SO : ScriptableObject
         force = initialVector;
         distance = initialDistance;
 
-        Debug.Log("GameDate_SO data has been reset."); // 用于调试确认
     }
 }
 

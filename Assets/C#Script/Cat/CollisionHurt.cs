@@ -10,6 +10,12 @@ public class CollisionHurt : MonoBehaviour
     public float momentum1;
     public float momentum2;
     public float maxHurtmomentum;
+
+    [Header("¿ÛÑªÖµ")]
+    public int hurt1;
+    public int hurt2;
+    public int hurt3;
+    public int hurt4;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,17 +37,17 @@ public class CollisionHurt : MonoBehaviour
                 {
                     if (momentum > maxHurtmomentum)
                     {
-                        GameDate.blood -= 50;//momentum > maxHurtmomentum
+                        GameDate.blood -= hurt4;//momentum > maxHurtmomentum
                     }
                     else
-                        GameDate.blood -= 30;//momentum > momentum2
+                        GameDate.blood -= hurt3;//momentum > momentum2
 
                 }
                 else
-                    GameDate.blood -= 20;//momentum > momentum1
+                    GameDate.blood -= hurt2;//momentum > momentum1
             }
             else
-                GameDate.blood -= 10;//momentum > minHurtmomentum
+                GameDate.blood -= hurt1;//momentum > minHurtmomentum
             
         }
 
