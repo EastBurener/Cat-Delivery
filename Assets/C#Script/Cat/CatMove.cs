@@ -132,7 +132,6 @@ public class CatMove : MonoBehaviour
 		{
 			GameDate.startPos = Input.mousePosition;
 			start = true;
-			Debug.Log("进入");
 			if (lr != null) lr.enabled = true; // 显示轨迹线
 		}
 
@@ -210,7 +209,6 @@ public class CatMove : MonoBehaviour
 	}
     private void FixedUpdate()
     {
-		Debug.Log("体力恢复");
         Vector2 velocity = rb.velocity;
         float speedMagnitude = velocity.magnitude;
         //静止时体力恢复
