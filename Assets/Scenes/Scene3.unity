@@ -2012,6 +2012,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739641054187853391}
     m_Modifications:
+    - target: {fileID: 763700152444178375, guid: 76554217a0928b54ca3804b65d7a509d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9091177401359181455}
+    - target: {fileID: 763700152444178375, guid: 76554217a0928b54ca3804b65d7a509d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ThrowPackage
+      objectReference: {fileID: 0}
     - target: {fileID: 1460663785712132308, guid: 76554217a0928b54ca3804b65d7a509d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
