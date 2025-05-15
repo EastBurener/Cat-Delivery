@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIndex: 3
-  sceneNameToLoad: Scene1
+  sceneNameToLoad: Scene3
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
   lockIcon: {fileID: 0}
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIndex: 2
-  sceneNameToLoad: Scene1
+  sceneNameToLoad: Scene2
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
   lockIcon: {fileID: 0}
@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIndex: 4
-  sceneNameToLoad: Scene1
+  sceneNameToLoad: Scene4
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
   lockIcon: {fileID: 0}

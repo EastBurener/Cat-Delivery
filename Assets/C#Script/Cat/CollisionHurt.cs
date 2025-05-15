@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHurt : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class CollisionHurt : MonoBehaviour
             else
                 GameDate.blood -= hurt1;//momentum > minHurtmomentum
             
+        }
+        if (GameDate.blood <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameDate.ResetData();
         }
 
 

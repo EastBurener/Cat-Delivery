@@ -2101,13 +2101,25 @@ PrefabInstance:
       propertyPath: GameDate
       value: 
       objectReference: {fileID: 11400000, guid: 54a244f8f2f78a240aba21632fcc0d79, type: 2}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73231ad9b86436b43923fa6a642f94b7, type: 3}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3620125532090361587, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 157.00012
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3620125532090361587, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 105.00003
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4783996354177060014, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2118,12 +2130,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 54a244f8f2f78a240aba21632fcc0d79, type: 2}
     - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 566.3438
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 107.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 158
+      value: 275.2619
       objectReference: {fileID: 0}
     - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 38
+      value: 166.54651
       objectReference: {fileID: 0}
     - target: {fileID: 8008372794216748860, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2217,6 +2237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StopDisappear
       objectReference: {fileID: 0}
+    - target: {fileID: 9095781511233925853, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a793bc183d6b6bd4fa75a076874c269b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

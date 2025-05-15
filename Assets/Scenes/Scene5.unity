@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 95592385}
-  timeRemaining: 60
+  timeRemaining: 120
 --- !u!114 &95592385 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5054284831924116803, guid: 25ae34198c299c441b936495be8903ac, type: 3}
@@ -1478,7 +1478,7 @@ MonoBehaviour:
   verticalSpacing: 0.02
   dropKey: 114
   throwForce: 5
-  maxPackages: 1
+  maxPackages: 2
   weightPerPackage: 0.2
   packageCounterText: {fileID: 547037469}
   packageStack: []
@@ -1629,13 +1629,25 @@ PrefabInstance:
       propertyPath: GameDate
       value: 
       objectReference: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 73231ad9b86436b43923fa6a642f94b7, type: 3}
+    - target: {fileID: 2871885257148916194, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3620125532090361587, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 158.00012
+      value: 244.8
       objectReference: {fileID: 0}
     - target: {fileID: 3620125532090361587, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 105
+      value: 32.3
       objectReference: {fileID: 0}
     - target: {fileID: 4783996354177060014, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1646,12 +1658,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
     - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 544.1942
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 93.7505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 159
+      value: 265.18707
       objectReference: {fileID: 0}
     - target: {fileID: 6106901801536891623, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 38.00003
+      value: 115.3
       objectReference: {fileID: 0}
     - target: {fileID: 8008372794216748860, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1745,6 +1765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StopDisappear
       objectReference: {fileID: 0}
+    - target: {fileID: 9095781511233925853, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a793bc183d6b6bd4fa75a076874c269b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
