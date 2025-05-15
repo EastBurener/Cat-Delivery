@@ -877,7 +877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 128207750}
         m_TargetAssemblyTypeName: Button, UI
-        m_MethodName: quit
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
