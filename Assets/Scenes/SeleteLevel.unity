@@ -192,7 +192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 4
 --- !u!222 &49640746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73506e3c798ccc8448c4bbd9f4cc8273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  levelIndex: 3
   sceneNameToLoad: Scene1
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
@@ -517,7 +517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 5
 --- !u!222 &587138678
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73506e3c798ccc8448c4bbd9f4cc8273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  levelIndex: 5
   sceneNameToLoad: Scene1
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73506e3c798ccc8448c4bbd9f4cc8273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  levelIndex: 2
   sceneNameToLoad: Scene1
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73506e3c798ccc8448c4bbd9f4cc8273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
+  levelIndex: 4
   sceneNameToLoad: Scene1
   buttonComponent: {fileID: 0}
   levelText: {fileID: 0}
@@ -1398,7 +1398,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 3
 --- !u!222 &1737612832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 2
 --- !u!222 &1874711960
 CanvasRenderer:
   m_ObjectHideFlags: 0
