@@ -10,6 +10,7 @@ public class LevelCompletionHandler : MonoBehaviour
 
 	[Header("UI 引用")]
 	public GameObject victoryPanel; // 将你的主胜利UI面板拖拽到此字段
+	public GameObject stopDisappear;
 
 	void Start()
 	{
@@ -58,6 +59,7 @@ public class LevelCompletionHandler : MonoBehaviour
 		{
 			Debug.Log($"[LCH - {gameObject.scene.name}] 显示胜利界面 (来自LevelCompletionHandler) 并暂停游戏。");
 			victoryPanel.SetActive(true);
+			stopDisappear.SetActive(false);
 			Time.timeScale = 0f; // 在这里统一处理时间暂停
 		}
 		else

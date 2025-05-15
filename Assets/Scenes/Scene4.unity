@@ -3155,6 +3155,7 @@ MonoBehaviour:
   currentLevelIndex: 5
   levelSelectSceneName: LevelSelectScene
   victoryPanel: {fileID: 1041040595696995221}
+  stopDisappear: {fileID: 691195042}
 --- !u!4 &754803627
 Transform:
   m_ObjectHideFlags: 0
