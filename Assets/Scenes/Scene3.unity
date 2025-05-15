@@ -13162,7 +13162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1268793172}
   endPanel: {fileID: 1429850628}
-  timeRemaining: 15
+  timeRemaining: 45
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

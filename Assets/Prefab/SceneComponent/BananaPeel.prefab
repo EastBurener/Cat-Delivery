@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f620479a4978c024092b295ded1075ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideSpeed: 20
+  slideSpeed: 15
   slideDuration: 1
   playerTag: Player
   slideRight: 1
