@@ -968,20 +968,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d07fb23c85933c4083879ac702aea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 95592385}
+  countdownText: {fileID: 0}
   endPanel: {fileID: 1259645432}
   timeRemaining: 120
---- !u!114 &95592385 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5054284831924116803, guid: 25ae34198c299c441b936495be8903ac, type: 3}
-  m_PrefabInstance: {fileID: 547037467}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &181221734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1602,7 @@ MonoBehaviour:
   throwForce: 5
   maxPackages: 2
   weightPerPackage: 0.2
-  packageCounterText: {fileID: 547037469}
+  packageCounterText: {fileID: 0}
   packageStack: []
   detectedPackages: []
 --- !u!114 &486410902
@@ -1758,6 +1747,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739641054347951746}
     m_Modifications:
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 343.27002
+      objectReference: {fileID: 0}
+    - target: {fileID: 479842839053646573, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 95.899994
+      objectReference: {fileID: 0}
     - target: {fileID: 1293585971938436350, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: GameDate
       value: 
@@ -1786,6 +1799,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -110
       objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 306
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463989540209436654, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 195
+      objectReference: {fileID: 0}
     - target: {fileID: 5976901249095354220, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: GameDate
       value: 
@@ -1806,6 +1843,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 115.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6409700541745348343, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: GameDate
+      value: 
+      objectReference: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
+    - target: {fileID: 7546408397523158937, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+      propertyPath: GameDate
+      value: 
+      objectReference: {fileID: 11400000, guid: f06c6b73370c51e42b9f2b588a8eb214, type: 2}
     - target: {fileID: 8008372794216748860, guid: 25ae34198c299c441b936495be8903ac, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 348
@@ -1909,23 +1954,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 25ae34198c299c441b936495be8903ac, type: 3}
 --- !u!224 &547037468 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8537585161385568039, guid: 25ae34198c299c441b936495be8903ac, type: 3}
-  m_PrefabInstance: {fileID: 547037467}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &547037469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6561209090213833805, guid: 25ae34198c299c441b936495be8903ac, type: 3}
-  m_PrefabInstance: {fileID: 547037467}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &547037470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8662188479798282417, guid: 25ae34198c299c441b936495be8903ac, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6901923276178537184, guid: 25ae34198c299c441b936495be8903ac, type: 3}
   m_PrefabInstance: {fileID: 547037467}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &633178888
@@ -2017,7 +2046,7 @@ MonoBehaviour:
   currentLevelIndex: 2
   levelSelectSceneName: LevelSelectScene
   victoryPanel: {fileID: 1041040593864468724}
-  stopDisappear: {fileID: 547037470}
+  stopDisappear: {fileID: 0}
 --- !u!4 &796140786
 Transform:
   m_ObjectHideFlags: 0
@@ -28203,7 +28232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameUI: {fileID: 2091695447}
-  StopDisappear: {fileID: 547037470}
+  StopDisappear: {fileID: 0}
   ESCmenu: {fileID: 7241921797215534910}
   Cat: {fileID: 486410894}
 --- !u!222 &9058077751803595036
