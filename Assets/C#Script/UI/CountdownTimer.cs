@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CountdownTimer : MonoBehaviour
 {
 	public Text countdownText;
-	public GameObject endPanel; // 新增：结束界面Panel的引用
+	public GameObject endPanel; 
 
 	public float timeRemaining = 60f;
 	private bool timerIsRunning = false;
