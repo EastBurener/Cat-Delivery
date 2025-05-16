@@ -17,7 +17,7 @@ public class CollisionHurt : MonoBehaviour
     public int hurt2;
     public int hurt3;
     public int hurt4;
-    // Start is called before the first frame update
+
     void Start()
     {
         GameDate.blood = 100;

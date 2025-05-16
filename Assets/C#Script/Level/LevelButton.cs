@@ -1,8 +1,7 @@
-// Scripts/UI/LevelButton.cs
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // 用于 UnityEngine.UI.Button
-using TMPro;          // 如果你用的是 TextMeshPro
+using UnityEngine.UI; 
+using TMPro;         
 
 public class LevelButton : MonoBehaviour
 {
@@ -11,9 +10,9 @@ public class LevelButton : MonoBehaviour
 	public string sceneNameToLoad;
 
 	[Header("UI组件")]
-	public UnityEngine.UI.Button buttonComponent; // 明确类型
-	public TMPro.TextMeshProUGUI levelText;       // 明确类型 (如果使用TMPro)
-												  // 如果不用TMPro, 请改为: public UnityEngine.UI.Text levelText;
+	public UnityEngine.UI.Button buttonComponent; 
+	public TMPro.TextMeshProUGUI levelText;       
+												 
 	public GameObject lockIcon;
 
 	private bool isLocked = true;
@@ -26,7 +25,7 @@ public class LevelButton : MonoBehaviour
 		}
 		if (levelText == null)
 		{
-			levelText = GetComponentInChildren<TMPro.TextMeshProUGUI>(); // 如果不用TMPro, 改为 GetComponentInChildren<UnityEngine.UI.Text>();
+			levelText = GetComponentInChildren<TMPro.TextMeshProUGUI>(); 
 		}
 
 		if (buttonComponent == null)

@@ -1,4 +1,3 @@
-// Assets/Scripts/Gameplay/LevelCompletionHandler.cs
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,10 +5,10 @@ public class LevelCompletionHandler : MonoBehaviour
 {
 	[Header("关卡设置")]
 	public int currentLevelIndex; // 在Inspector中为每个关卡场景设置 (例如: 第一关为1, 第二关为2)
-	public string levelSelectSceneName = "LevelSelectScene"; // 你的选关场景的名称
+	public string levelSelectSceneName = "LevelSelectScene"; // 选关场景的名称
 
 	[Header("UI 引用")]
-	public GameObject victoryPanel; // 将你的主胜利UI面板拖拽到此字段
+	public GameObject victoryPanel; // 将主胜利UI面板拖拽到此字段
 	public GameObject stopDisappear;
 
 	void Start()
